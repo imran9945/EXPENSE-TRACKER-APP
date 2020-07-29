@@ -1,8 +1,12 @@
 const transactionReducer = (state, action) => {
     switch (action.type) {
-        case 'ADD_TRANSACTION':
+        case 'ADD_TRANSACTION':{
             return [action.payload, ...state]
-        default:
+        }
+        case 'DELETE_TRANSACTION':{
+            return state.filter((transaction)=>transaction.id !== action.payload)
+        }
+            default:
             return state;
     };
 }

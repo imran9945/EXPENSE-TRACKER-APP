@@ -3,7 +3,7 @@ import { TransactionContext } from './Tcontext';
 
 function Child() {
 
-    const { transactions, addTransaction } = useContext(TransactionContext);
+    const { transactions, addTransaction, deltrans} = useContext(TransactionContext);
 
     
     let [newDesc, setNewDesc] = useState('');
@@ -11,7 +11,10 @@ function Child() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addTransaction({ amount: Number(newAmount), desc: newDesc })
+        addTransaction({ 
+            id:Math.floor(Math.random()*100000000),
+            amount: Number(newAmount), 
+            desc: newDesc })
     }
 
     const getIncome = () => {
@@ -48,14 +51,17 @@ function Child() {
             <ul className="trans-list">
                 {transactions.map((transaction, ind) => {
                     return (
+                        <>
                         <li key={ind}>
+                        <button className="del-btn" onClick={() => deltrans(transaction.id)}>x</button>
                             <span> {transaction.desc} </span>
                             <span> {transaction.amount} </span>
                         </li>
+                        </>
                     )
                 })}
             </ul>
-
+            
             <h4>Add New Transaction</h4>
             <hr />
 

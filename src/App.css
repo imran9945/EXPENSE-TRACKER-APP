@@ -41,3 +41,20 @@ box-shadow: 0 0 10px grey ;
   background-color: rosybrown;
   font-weight: bolder;
 }
+.del-btn{
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px; 
+  line-height: 20px;
+  padding: 2px 5px;
+  /* position: static;   */
+  top: 50%;
+  left: 0; 
+   /* transform: translate(-100%, -50%);  */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.trans-list li:hover .del-btn {
+  opacity: 1;
+}
